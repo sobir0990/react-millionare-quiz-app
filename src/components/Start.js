@@ -10,7 +10,7 @@ export default function Start({setUsername}) {
 
     return (
         <div className='start'>
-            <input type="text" placeholder='Enter your name' className='startInput' ref={inputRef} />
+            <input type="text" placeholder='Ismingizni kiriting' className='startInput' ref={inputRef} />
             <button className='startButton' onClick={handleClick}>Start</button>
         </div>
     )

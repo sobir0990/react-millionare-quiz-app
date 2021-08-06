@@ -53,16 +53,12 @@ export default function Trivia({
         delay(3000, () => setClassName(a.correct ? "answer correct" : "answer wrong"));
         delay(6000, () => {
             if (a.correct) {
-                // delay(1000, () => {
                     correctAnswer();
                     setQuestionNumber((prev) => prev + 1);
                     setSelectAnswer(null);
-                // });
             } else {
                 wrongAnswer();
-                // delay(1000, () => {
                     setStop(true)
-                // });
             }
         })
     };

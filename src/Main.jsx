@@ -14,29 +14,30 @@ function Main() {
     const data = [
         {
             id: 1,
-            question: "Rolex is a company that specializes in what type of product?",
+            question: "Rolex - bu qaysi turdagi mahsulotlarga ixtisoslashgan kompaniya?",
             answers: [
                 {
-                    text: "Phone",
+                    text: "Telefon",
                     correct: false,
                 },
                 {
-                    text: "Watches",
+                    text: "Soat",
                     correct: true,
                 },
                 {
-                    text: "Food",
+                    text: "Ovqat",
                     correct: false,
                 },
                 {
-                    text: "Cosmetic",
+                    text: "Kosmetika",
                     correct: false,
                 },
             ],
         },
+
         {
             id: 2,
-            question: "When did the website `Facebook` launch?",
+            question: "Facebook sayti qachon ochilgan?",
             answers: [
                 {
                     text: "2004",
@@ -211,6 +212,7 @@ function Main() {
                 },
             ],
         },
+
     ];
 
     const moneyPyramid = [
@@ -240,18 +242,24 @@ function Main() {
             {username ? (
                 <>
                     <div className="main">
-                        {stop ? <h1 className='endText'>{username} earned: {earned} </h1> : (
+                        {stop ? <h1 className='endText'>Hurmatli {username} siz {earned} qolga kiritdingiz</h1> : (
                             <>
                                 <div className="top">
-                                    <div className="timer"><Timer setStop={setStop} questionNumber={questionNumber}/></div>
+                                    <div className="timer"><Timer setStop={setStop} questionNumber={questionNumber}/>
+                                    </div>
                                 </div>
                                 <div className="bottom">
-                                    <Trivia
-                                        data={data}
-                                        setStop={setStop}
-                                        questionNumber={questionNumber}
-                                        setQuestionNumber={setQuestionNumber}
-                                    />
+                                    {
+                                        questionNumber === data.length + 1 ? setStop(true) : (
+                                            <Trivia
+                                                data={data}
+                                                setStop={setStop}
+                                                questionNumber={questionNumber}
+                                                setQuestionNumber={setQuestionNumber}
+                                            />
+                                        )
+                                    }
+
                                 </div>
                             </>
                         )}
@@ -260,7 +268,8 @@ function Main() {
                     <div className="pyramid">
                         <ul className="moneyList">
                             {moneyPyramid.map((m) => (
-                                <li key={m.id} className={questionNumber === m.id ? "moneyListItem active" : "moneyListItem"}>
+                                <li key={m.id}
+                                    className={questionNumber === m.id ? "moneyListItem active" : "moneyListItem"}>
                                     <span className='moneyListItemNumber'>{m.id}</span>
                                     <span className='moneyListItemNumber'>{m.amount}</span>
                                 </li>
